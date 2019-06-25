@@ -40,7 +40,7 @@ Clone the project
 git clone https://github.com/rfautier/find_correction.git && cd find_correction
 ```
 
-Set the python3 environnement and requirement
+Set the python3 environment and requirement
 
 ```
 virtualenv -p python3 venv && source venv/bin/activate && pip3 install -r requirement.txt
@@ -59,6 +59,6 @@ The download is in your current directory, like an hidden files (`ls -a` to see 
 
 ## Parameters
 
---campus CAMPUS  You can specify a campus. Paris is the default.
+``` --campus ``` CAMPUS  You can specify a campus. Paris is the default.
 
---update        To re-download all users register to an project
+``` --update ```        To re-download all users register to an project
