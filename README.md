@@ -37,7 +37,7 @@ Or you can enter this envionnement variable in your rc (~/.zshrc)
 Clone the project
 
 ```
-git clone TOFILL HERE
+git clone https://github.com/rfautier/find_correction.git && cd find_correction
 ```
 
 Set the python3 environnement and requirement
