@@ -16,7 +16,7 @@ sgueko : e3r9p3
 
 ## Prerequisites
 
-You need to have python3 (brew install python3)
+You need to have python3 (``` brew install python3 ```)
 
 You need to have a token (UID and Secret).
 
