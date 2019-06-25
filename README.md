@@ -1,6 +1,6 @@
 # Find A Correction at 42 !
 
-This script list all peaple who is log and validated / register to the project.
+This script list all people who is log and validated / register to an project.
 
 ## Exemple
 
@@ -61,4 +61,4 @@ The download is in your current directory like hidden file (`ls -a` to see them)
 
 --campus CAMPUS  You can specifie a campus. Paris is the default.
 
---update        To re-download the register user to a project
+--update        To re-download all users register to an project
