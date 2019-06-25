@@ -2,7 +2,7 @@
 
 This script list all people who are log and validated / register a project.
 
-## Exemple
+## Example
 
 ```
 (venv) $> python find_correction.py "Malloc"
