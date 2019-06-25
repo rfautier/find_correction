@@ -1,6 +1,6 @@
 # Find A Correction at 42 !
 
-This script list all people who are log and validated / register to a project.
+This script list all people who are log and validated / register a project.
 
 ## Exemple
 
