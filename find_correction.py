@@ -5,6 +5,7 @@ import simplejson as json
 import argparse
 import pickle
 from progress.bar import ChargingBar
+from tabulate import tabulate
 
 def connection_api():
 	args = [
@@ -68,7 +69,7 @@ def get_user_who_make_the_project(id, token, argument):
 			for projet in response:
 				for team in projet['teams']:
 					for user in team['users']:
-						all_user.append(user['login'])
+						all_user[user['login']] = [projet['status'], projet['validated?'], projet['final_mark']]
 			page += 1
 			bar.next()
 			time.sleep(1)
@@ -87,7 +88,7 @@ def create_buffer_file(args, people_we_want):
 		exit(0)
 
 def get_buffer_file(args):
-	b = []
+	b = {}
 	try :
 		with open(".{}.txt".format(args.name_project.replace(" ", "_")), "rb") as fp:   # Unpickling
 			b = pickle.load(fp)
@@ -170,15 +171,20 @@ if __name__ == "__main__":
 	people_we_want = get_user_who_make_the_project(id_project, token, args)
 	
 	people_here = get_all_people_connected(token, args)
-	
+
 	possible_corrector = []
 
 	for here in people_here:
 		if here[0] in people_we_want:
-			possible_corrector.append(here[0] + ' : ' + here[1])
+			possible_corrector.append([here[0], str(people_we_want[here[0]][0]), str(people_we_want[here[0]][1]), str(people_we_want[here[0]][2]), here[1]])
 	
+	possible_corrector_no_duplicate_value = [] # Remove duplicate value
+	for corrector in possible_corrector:
+		if not corrector[0] in [x[0] for x in possible_corrector_no_duplicate_value]:
+			possible_corrector_no_duplicate_value.append(corrector)
+	possible_corrector = possible_corrector_no_duplicate_value
+
 	if not possible_corrector:
 		print("No corrector found for this project")
 	else:
-		for corrector in set(possible_corrector):
-			print(corrector)
+		print(tabulate(possible_corrector, headers=['Login', 'Project status', 'Validated', 'Final Mark', 'Position']))

@@ -6,11 +6,14 @@ This script list all people who are log and validated / register a project.
 
 ```
 (venv) $> python find_correction.py "Malloc"
-rfautier : e2r3p13
-aaklpote : e3r8p1
-ccaballero : e3r2p2
-llompal : e3r5p20
-sgueko : e3r9p3
+Login     Project status          Validated    Final Mark    Position
+--------  ----------------------  -----------  ------------  ----------
+rfautier    in_progress             None         None          e3r5p11
+aaklpote    in_progress             None         None          e3r10p5
+ccaballero  in_progress             None         None          e2r4p4
+llompal     finished                True         123           e3r5p19
+sgueko      waiting_for_correction  None         None          e3r13p9
+
 (venv) $> 
 ```
 
