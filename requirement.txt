@@ -4,4 +4,5 @@ idna==2.8
 progress==1.5
 requests==2.22.0
 simplejson==3.16.0
+tabulate==0.8.3
 urllib3==1.25.3
