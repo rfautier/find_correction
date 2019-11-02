@@ -1,3 +1,6 @@
+# Update
+You can directly go to [peerfinder.app](https://peerfinder.app) for find peer :D
+
 # Find A Correction at 42 !
 
 This script list all people who are log and validated / register a project.
