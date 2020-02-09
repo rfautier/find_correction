@@ -4,6 +4,8 @@ import time
 import simplejson as json
 import argparse
 import pickle
+import nltk
+from operator import itemgetter
 from progress.bar import ChargingBar
 from tabulate import tabulate
 
@@ -25,6 +27,27 @@ def clear():
 	sys.stdout.write("\033[F")
 	sys.stdout.write("\033[K")
 
+def get_all_projects(token):
+	page = 0
+	lst_projects = []
+	while (1):
+		args = [
+		'access_token=%s' % (token['access_token']),
+		'token_type=bearer',
+		'page[size]=100',
+		'page[number]={}'.format(str(page)),
+		]
+		status = requests.get("https://api.intra.42.fr/v2/cursus/21/projects?%s" % ("&".join(args)))
+		if not status.status_code == 200:
+			print("Error during projects search.")
+			sys.exit()
+		response = status.json()
+		if not response:
+			break
+		lst_projects += [x['name'] for x in response]
+		page += 1
+	return lst_projects
+
 def get_id_project(name_project, token):
 	print("Get id of the project")
 	clear()
@@ -41,7 +64,14 @@ def get_id_project(name_project, token):
 	try:
 		return response[0]['id']
 	except:
+		lst_projects = get_all_projects(token)
 		print("Project {} not find. Please check your spelling.".format(name_project))
+		if lst_projects:
+			lst_project_sorted = sorted([[nltk.edit_distance(x, name_project), x] for x in lst_projects], key=itemgetter(0))
+			print("(Suggestion for 42cursus) The most similar projects are : \n")
+			#print(lst_project_sorted)
+			for prj in lst_project_sorted[:5]:
+				print(prj[1])
 		sys.exit()
 
 def get_user_who_make_the_project(id, token, argument):
