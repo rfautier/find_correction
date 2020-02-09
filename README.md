@@ -60,9 +60,8 @@ python find_correction.py your_project
 or, with Docker
 ```
 docker build -t find_correction .
-docker run -e FT42_UID="yourUIDHere" -e FT42_SECRET="yourSecretHere" find_correction your_project
+docker run -e FT42_UID=$FT42_UID -e FT42_SECRET=$FT42_SECRET -v $PWD:/app find_correction your_project
 ```
-(add `-v $PWD:/app` if you want to persist files)
 
 
 The first time, It's gonna be little longer depending on the projet.
