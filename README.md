@@ -57,6 +57,11 @@ virtualenv -p python3 venv && source venv/bin/activate && pip3 install -r requir
 ```
 python find_correction.py your_project
 ```
+or, with Docker
+```
+docker build -t find_correction .
+docker run -e FT42_UID=$FT42_UID -e FT42_SECRET=$FT42_SECRET -v $PWD:/app find_correction your_project
+```
 
 
 The first time, It's gonna be little longer depending on the projet.
